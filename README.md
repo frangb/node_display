@@ -13,17 +13,17 @@ Primero debemos soldar la pieza de 4 pines qie acompaña a la pantalla a los 4 c
 
 una vez hecho esto, conectaremos los cables como sigue:
 
-GND (tierra): Negro
-VCC (+5V): Rojo
-SCL (reloj): Verde
-SDA (datos): Azul
+* GND (tierra): Negro
+* VCC (+5V): Rojo
+* SCL (reloj): Verde
+* SDA (datos): Azul
 
 el otro extremo de los cables los conectaremos a la raspberry pi como sigue
 
-Pin 4: Rojo
-Pin 6: Negro
-Pin 3: Verde
-Pin 5: Azul
+* Pin 4: Rojo
+* Pin 6: Negro
+* Pin 3: Verde
+* Pin 5: Azul
 
 ![Conexiones](/docs/conexiones.png "Conexiones")
 
@@ -33,13 +33,20 @@ Si tienes algun otro dispositivo conectado, como por ejemplo un ventilador, y lo
 
 # Instalación
 Conectamos a nuestro nodo por ssh
+
     ssh admin@192.168.x.x
+
 Descargamos el repositorio
+
     git clone https://github.com/frangb/node_display
+
 Editamos el archivo de configuración, para añadir el usuario y contraseña de nuestro servidor RCP
+
     cd node_display
     nano config.txt
+
 Ejecutamos el script
+
     nohup python main.py &
 
 
