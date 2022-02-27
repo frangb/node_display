@@ -1,0 +1,4 @@
+[config]
+rpc_user = usuario
+rpc_pass = password
+rpc_host = 127.0.0.1
