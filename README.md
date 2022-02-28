@@ -4,6 +4,8 @@
 
 ## Material necesario
 
+A modo ilustrativo, dejo enlaces de aliexpress para cada uno de los componentes. No obstante, son dispositivos bastante estándar, por lo que los podéis comprar en cualquier otra tienda.
+
 - Pantalla modelo SSD1306
 https://es.aliexpress.com/item/32927682460.html
 - 4 cables dupont hembra-hembra (preferiblemente los colores rojo, negro, amarillo, verde. Puedes comprar un surtido y así tienes algunos extra para otros proyectos)
@@ -92,8 +94,4 @@ Iniciamos el servicio
     sudo systemctl enable node_display.service
     sudo systemctl start node_display.service
 
-
-sudo usermod -G i2c admin
-sudo useradd -g admin i2c
-sudo raspi-config
 
