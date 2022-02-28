@@ -9,16 +9,19 @@ import time
 import datetime
 from bitcoinrpc.authproxy import AuthServiceProxy
 from socket import error as socket_error
-import sys
+import sys, os
 import configparser
+
+
+CURRENT_PATH =os.path.dirname(sys.argv[0])
 
 # Config msg log
 logging.basicConfig(
-    filename="display.log", encoding="utf-8", level=logging.ERROR, format="%(asctime)s: %(levelname)s: %(message)s"
+    filename=CURRENT_PATH + "/display.log", encoding="utf-8", level=logging.ERROR, format="%(asctime)s: %(levelname)s: %(message)s"
 )
 
 parser = configparser.ConfigParser()
-parser.read("config.txt")
+parser.read(CURRENT_PATH + "/config.txt")
 
 #screen size
 DISPLAY_WIDTH = 128
@@ -32,8 +35,8 @@ ERROR_CODES = {
 # small font to display block time
 font_time = ImageFont.load_default()
 # big font to display block number or err code
-font_block = ImageFont.truetype("fonts/DSEG7Classic-Bold.ttf", size=20)
-font_err  = ImageFont.truetype("fonts/DSEG14Classic-Bold.ttf", size=20)
+font_block = ImageFont.truetype(CURRENT_PATH + "/fonts/DSEG7Classic-Bold.ttf", size=20)
+font_err  = ImageFont.truetype(CURRENT_PATH + "/fonts/DSEG14Classic-Bold.ttf", size=20)
 
 def clear():
     disp.fill(0)

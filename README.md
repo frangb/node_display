@@ -1,11 +1,16 @@
-# Material necesario
+# Display para mostrar info del nodo
+
+![Frontal](/docs/node_frong.jpeg "Frontal")
+
+
+## Material necesario
 
 - Pantalla modelo SSD1306
 https://es.aliexpress.com/item/32927682460.html
 - 4 cables dupont hembra-hembra (preferiblemente los colores rojo, negro, amarillo, verde. Puedes comprar un surtido y así tienes algunos extra para otros proyectos)
 https://es.aliexpress.com/item/1005003269498051.html
 
-# Preparación
+## Preparación
 
 Primero debemos soldar la pieza de 4 pines qie acompaña a la pantalla a los 4 conectores que trae esta, de manera que los cables los podamos conectar por la parte trasera
 
@@ -31,7 +36,7 @@ Si tienes algun otro dispositivo conectado, como por ejemplo un ventilador, y lo
 
 ![GPIO pines](/docs/gpio.png "GPIO pines")
 
-# Instalación
+## Instalación
 Conectamos a nuestro nodo por ssh
 
     ssh admin@192.168.x.x
@@ -44,6 +49,8 @@ Editamos el archivo de configuración, para añadir el usuario y contraseña de 
 
     cd node_display
     nano config.txt
+
+Ahora vamos a crear un servicio para poder ejecutar cómodamente el script y también hacer que se ponga en marcha automáticamente al iniciar el sistema
 
 Copiamos el archivo node_display.service en la carpeta `/lib/systemd/system/``
 
