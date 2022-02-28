@@ -1,0 +1,11 @@
+[Unit]
+Description=Node display
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/pi/node_display/node_display.py
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
