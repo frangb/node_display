@@ -1,6 +1,6 @@
 # Display para mostrar info del nodo
 
-![Frontal](/docs/node_frong.jpeg "Frontal")
+![Frontal](/docs/node_front.jpeg "Frontal")
 
 
 ## Material necesario
