@@ -2,7 +2,6 @@
 
 ![Frontal](/docs/node_front.jpeg "Frontal")
 
-
 ## Material necesario
 
 - Pantalla modelo SSD1306
@@ -36,7 +35,30 @@ Si tienes algun otro dispositivo conectado, como por ejemplo un ventilador, y lo
 
 ![GPIO pines](/docs/gpio.png "GPIO pines")
 
+## Activación de las comunicaciones por I2C
+
+Los pines de I2C de Raspberry Pi son una manera extremadamente útil de comunicarse con distintos tipos de periféricos externos, y son los que usaremos para conectar nuestra pantalla al dispositivo.
+
+Este módulo del kernel viene desactivado por defecto, por lo que tendremos que activarlo de la siguiente manera
+
+    sudo raspi-config
+
+Tras ejecutar este comando veremos el siguiente menú
+
+![raspi-config](/docs/raspi-config.png "raspi-config menu" | width=100)
+
+Debemos seleccionar la opción 3 (Interface Options), y una vez dentro, seleccionar la opción I5 (enable/disable automatic loading of I2C kernel module)
+
+Una vez hecho esto, podemos pulsar en "Back" y posteriormente en "Finish"
+
+## Permisos del usuario Admin para acceder a los pines I2C
+
+Para que el usuario admin pueda leer y escribir de los pines i2c, debemos añadirlo a ese grupo de usuarios con el siguiente comando:
+
+    sudo usermod -a -G i2c admin
+
 ## Instalación
+
 Conectamos a nuestro nodo por ssh
 
     ssh admin@192.168.x.x
@@ -71,5 +93,7 @@ Iniciamos el servicio
     sudo systemctl start node_display.service
 
 
-
+sudo usermod -G i2c admin
+sudo useradd -g admin i2c
+sudo raspi-config
 
