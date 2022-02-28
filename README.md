@@ -45,9 +45,21 @@ Editamos el archivo de configuración, para añadir el usuario y contraseña de 
     cd node_display
     nano config.txt
 
-Ejecutamos el script
+Copiamos el archivo node_display.service en la carpeta `/lib/systemd/system/``
 
-    nohup python main.py &
+    sudo cp ./node_display.service /lib/systemd/system/node_display.service
+
+Actualizamos los permisos
+
+    sudo chmod 644 /lib/systemd/system/node_display.service
+    chmod +x ./node_display.py
+
+Iniciamos el servicio
+
+    sudo systemctl daemon-reload
+    sudo systemctl enable node_display.service
+    sudo systemctl start node_display.service
+
 
 
 

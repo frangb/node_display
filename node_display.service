@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python /home/pi/node_display/node_display.py
+ExecStart=/usr/bin/python /home/admin/node_display/node_display.py
 Restart=on-abort
 
 [Install]
