@@ -45,7 +45,7 @@ Este módulo del kernel viene desactivado por defecto, por lo que tendremos que 
 
 Tras ejecutar este comando veremos el siguiente menú
 
-![raspi-config](/docs/raspi-config.png "raspi-config menu" | width=100)
+![raspi-config](/docs/raspi-config.png "raspi-config menu")
 
 Debemos seleccionar la opción 3 (Interface Options), y una vez dentro, seleccionar la opción I5 (enable/disable automatic loading of I2C kernel module)
 
