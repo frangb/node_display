@@ -45,9 +45,12 @@ Descargamos el repositorio
 
     git clone https://github.com/frangb/node_display
 
+Instalamos las dependencias
+    cd node_display
+    pip install -r requirements.txt
+
 Editamos el archivo de configuración, para añadir el usuario y contraseña de nuestro servidor RCP
 
-    cd node_display
     nano config.txt
 
 Ahora vamos a crear un servicio para poder ejecutar cómodamente el script y también hacer que se ponga en marcha automáticamente al iniciar el sistema
