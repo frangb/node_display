@@ -14,23 +14,29 @@ import configparser
 
 
 CURRENT_PATH =os.path.dirname(sys.argv[0])
+REFRESH_INTERVAL = 20
 
 # Config msg log
 logging.basicConfig(
     filename=CURRENT_PATH + "/display.log", encoding="utf-8", level=logging.ERROR, format="%(asctime)s: %(levelname)s: %(message)s"
 )
 
-parser = configparser.ConfigParser()
-parser.read(CURRENT_PATH + "/config.txt")
-
-#screen size
-DISPLAY_WIDTH = 128
-DISPLAY_HEIGHT = 32
-
 ERROR_CODES = {
     "Connection problem": "ERR 01",
     "No response": "ERR 02"
     }
+
+# read config file
+parser = configparser.ConfigParser()
+parser.read(CURRENT_PATH + "/config.txt")
+
+rpc_user = parser.get("config", "rpc_user")
+rpc_pass = parser.get("config", "rpc_pass")
+rpc_host = parser.get("config", "rpc_host") # if running locally then 127.0.0.1
+
+# set screen size
+DISPLAY_WIDTH = 128
+DISPLAY_HEIGHT = 32
 
 # small font to display block time
 font_time = ImageFont.load_default()
@@ -42,12 +48,12 @@ def clear():
     disp.fill(0)
     disp.show()
 
-#initialize screen driver
+# Initialize screen driver
 i2c = busio.I2C(SCL, SDA)
 disp = adafruit_ssd1306.SSD1306_I2C(DISPLAY_WIDTH, DISPLAY_HEIGHT, i2c)
 clear()
 
-# Blinks and show "NEW BLK" when a new block is found
+# Blinks and show "NEW BLK" for n seconds when a new block is found
 def blink(seconds):
     image = Image.new('1', (DISPLAY_WIDTH, DISPLAY_HEIGHT))
     draw = ImageDraw.Draw(image)
@@ -61,7 +67,8 @@ def blink(seconds):
         else:
             clear()
             time.sleep(1)
-    
+
+# Shows block height and block time    
 def draw(block, blocktime):
     image = Image.new('1', (DISPLAY_WIDTH, DISPLAY_HEIGHT))
     draw = ImageDraw.Draw(image)
@@ -69,17 +76,14 @@ def draw(block, blocktime):
     draw.text((14, 12), block, font=font_block, fill=255)
     disp.image(image)
     disp.show()
-    
+
+# Shows error code
 def draw_err(err_code):
     image = Image.new('1', (DISPLAY_WIDTH, DISPLAY_HEIGHT))
     draw = ImageDraw.Draw(image)
-    draw.text((14, 12), current_block, font=font_err, fill=255)
+    draw.text((14, 12), err_code, font=font_err, fill=255)
     disp.image(image)
     disp.show()
-    
-rpc_user = parser.get("config", "rpc_user")
-rpc_pass = parser.get("config", "rpc_pass")
-rpc_host = parser.get("config", "rpc_host") # if running locally then 127.0.0.1
 
 try:
     rpc_client = AuthServiceProxy(f"http://{rpc_user}:{rpc_pass}@{rpc_host}:8332", timeout=240)
@@ -110,4 +114,4 @@ while True:
     else:
         draw_err(ERROR_CODES["No response"])
         logging.error("No response from node")
-    time.sleep(20)
+    time.sleep(REFRESH_INTERVAL)
