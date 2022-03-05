@@ -17,14 +17,14 @@ Primero debemos soldar la pieza de 4 pines qie acompaña a la pantalla a los 4 c
 
 ![Conexiones](/docs/pines.jpeg "Conexiones")
 
-una vez hecho esto, conectaremos los cables como sigue:
+Una vez hecho esto, conectaremos los cables como sigue:
 
 * GND (tierra): Negro
 * VCC (+5V): Rojo
 * SCL (reloj): Verde
 * SDA (datos): Azul
 
-el otro extremo de los cables los conectaremos a la raspberry pi como sigue
+El otro extremo de los cables los conectaremos a la raspberry pi como sigue
 
 * Pin 4: Rojo
 * Pin 6: Negro
@@ -33,7 +33,7 @@ el otro extremo de los cables los conectaremos a la raspberry pi como sigue
 
 ![Conexiones](/docs/conexiones.png "Conexiones")
 
-Si tienes algun otro dispositivo conectado, como por ejemplo un ventilador, y los pines 4 y 6 están ocupados, no te preocupes, ya que la raspberry tiene mas pines de 5V y de tierra, puedes consultar este diagrama y conectarlo a cualquier otro que cumpla la misma función
+Si tienes algun otro dispositivo conectado, como por ejemplo un ventilador, y los pines 4 y 6 están ocupados, no te preocupes, ya que la raspberry tiene mas pines de 5V y de tierra, puedes consultar este diagrama y conectarlo a cualquier otro que cumpla la misma función.
 
 ![GPIO pines](/docs/gpio.png "GPIO pines")
 
@@ -55,7 +55,7 @@ Una vez hecho esto, podemos pulsar en "Back" y posteriormente en "Finish"
 
 ## Permisos del usuario Admin para acceder a los pines I2C
 
-Para que el usuario admin pueda leer y escribir de los pines i2c, debemos añadirlo a ese grupo de usuarios con el siguiente comando:
+Para que el usuario `admin` pueda leer y escribir de los pines i2c, debemos añadirlo a ese grupo de usuarios con el siguiente comando:
 
     sudo usermod -a -G i2c admin
 
@@ -65,11 +65,12 @@ Conectamos a nuestro nodo por ssh
 
     ssh admin@192.168.x.x
 
-Descargamos el repositorio
+Descargamos el repositorio en nuestro directorio home:
 
     git clone https://github.com/frangb/node_display
 
-Instalamos las dependencias
+Instalamos las dependencias:
+
     cd node_display
     pip install -r requirements.txt
 
@@ -79,7 +80,7 @@ Editamos el archivo de configuración, para añadir el usuario y contraseña de 
 
 Ahora vamos a crear un servicio para poder ejecutar cómodamente el script y también hacer que se ponga en marcha automáticamente al iniciar el sistema
 
-Copiamos el archivo node_display.service en la carpeta `/lib/systemd/system/``
+Copiamos el archivo node_display.service en la carpeta `/lib/systemd/system/`
 
     sudo cp ./node_display.service /lib/systemd/system/node_display.service
 
