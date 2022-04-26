@@ -29,7 +29,7 @@ ERROR_CODES = {
 
 # read config file
 parser = configparser.ConfigParser()
-parser.read(CURRENT_PATH + "/config.txt")
+parser.read("config.txt")
 
 rpc_user = parser.get("config", "rpc_user")
 rpc_pass = parser.get("config", "rpc_pass")
@@ -42,8 +42,8 @@ DISPLAY_HEIGHT = 32
 # small font to display block time
 font_time = ImageFont.load_default()
 # big font to display block number or err code
-font_block = ImageFont.truetype(CURRENT_PATH + "/fonts/DSEG7Classic-Bold.ttf", size=20)
-font_err  = ImageFont.truetype(CURRENT_PATH + "/fonts/DSEG14Classic-Bold.ttf", size=20)
+font_block = ImageFont.truetype("fonts/DSEG7Classic-Bold.ttf", size=20)
+font_err  = ImageFont.truetype("fonts/DSEG14Classic-Bold.ttf", size=20)
 
 def clear():
     disp.fill(0)
