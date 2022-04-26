@@ -18,8 +18,9 @@ REFRESH_INTERVAL = 20
 
 # Config msg log
 logging.basicConfig(
-    filename=CURRENT_PATH + "/display.log", encoding="utf-8", level=logging.ERROR, format="%(asctime)s: %(levelname)s: %(message)s"
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
 )
+logger = logging.getLogger(__name__)
 
 ERROR_CODES = {
     "Connection problem": "ERR 01",
