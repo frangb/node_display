@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from board import SCL, SDA
+from lib.board import SCL, SDA
 import busio
 from PIL import Image, ImageDraw, ImageFont
 import adafruit_ssd1306
@@ -12,8 +12,6 @@ from socket import error as socket_error
 import sys, os
 import configparser
 
-
-CURRENT_PATH =os.path.dirname(sys.argv[0])
 REFRESH_INTERVAL = 20
 
 # Config msg log
