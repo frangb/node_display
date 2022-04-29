@@ -1,5 +1,7 @@
 Adafruit_Blinka==7.0.1
+Adafruit_PlatformDetect==3.20.0
 adafruit_ssd1306==1.6.2
-python-bitcoinrpc==1.0
-Pillow==9.0.1
+bitcoinrpc==0.5.0
+Pillow==9.1.0
 python_bitcoinrpc==1.0
+setuptools==57.4.0
